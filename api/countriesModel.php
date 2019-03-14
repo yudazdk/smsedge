@@ -4,16 +4,14 @@ namespace api\countries;
 
 require 'db.php';
 
-
-class countriesModel {
-    private $db;
+class countriesModel extends \Database {
     private $table = 'countries';
 
     public function __construct() {
-        $this->db = new \Database();
+        parent::__construct();
     }
 
     public function getCountries() {
-        return $this->db->selectQuery($this->table);
+        return $this->selectQuery($this->table);
     }
-}
+} ?>

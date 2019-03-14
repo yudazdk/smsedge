@@ -1,16 +1,13 @@
 <?php
 
-namespace api\users;
+namespace api\logs;
 
 require 'db.php';
 
 
-class logsModel {
-    private $db;
-    private $table = 'send_log';
-
+class logsModel extends \Database {
     public function __construct() {
-        $this->db = new \Database();
+        parent::__construct();
     }
 
     public function getLogs($params) {
@@ -52,6 +49,6 @@ class logsModel {
 
         $query .= " GROUP BY YEAR(log_created), MONTH(log_created), DAY(log_created)";
 
-        return $this->db->selectQueryStr($query, $fieldValues);
+        return $this->selectQueryStr($query, $fieldValues);
     }
 }

@@ -6,7 +6,7 @@ class Database{
     private $user = 'root';
     private $password = '';
 
-    public $db;
+    protected $db;
 
     public function __construct(){
         //heeft geen conditie nodig. moet uitgevoerd worden dus try

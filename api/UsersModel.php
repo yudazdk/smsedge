@@ -5,17 +5,14 @@ namespace api\users;
 require 'db.php';
 
 
-class usersModel {
-    private $db;
-    private $table = 'users';
-
+class usersModel extends \Database {
     public function __construct() {
-        $this->db = new \Database();
+        parent::__construct();
     }
 
     public function getUsers() {
         $query = "SELECT * FROM users where usr_active=1";
 
-        return $this->db->selectQueryStr($query);
+        return $this->selectQueryStr($query);
     }
 }
