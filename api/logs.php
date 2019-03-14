@@ -1,5 +1,6 @@
 <?php
 
+require 'config.php';
 require 'logsModel.php';
 
 $params = [
@@ -12,5 +13,5 @@ $params = [
 $logObj = new \api\logs\logsModel();
 $logs = $logObj->getLogs($params);
 
-header('Access-Control-Allow-Origin: http://localhost:3000');
+header('Access-Control-Allow-Origin: ' . ALLOWED_DOMAIN);
 echo json_encode($logs); ?>
