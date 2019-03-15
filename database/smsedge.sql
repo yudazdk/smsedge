@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2019 at 01:15 PM
+-- Generation Time: Mar 15, 2019 at 01:39 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `countries` (
   `cnt_id` int(11) NOT NULL,
-  `cnt_code` char(4) CHARACTER SET utf8 NOT NULL,
-  `cnt_title` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `cnt_code` char(4) NOT NULL,
+  `cnt_title` varchar(20) NOT NULL,
   `cnt_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `countries`
@@ -51,9 +51,9 @@ INSERT INTO `countries` (`cnt_id`, `cnt_code`, `cnt_title`, `cnt_created`) VALUE
 CREATE TABLE `numbers` (
   `num_id` int(11) NOT NULL,
   `cnt_id` int(11) NOT NULL,
-  `num_number` varchar(15) CHARACTER SET utf8 NOT NULL,
+  `num_number` varchar(15) NOT NULL,
   `num_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `numbers`
@@ -73,10 +73,10 @@ CREATE TABLE `send_log` (
   `log_id` int(11) NOT NULL,
   `usr_id` int(11) NOT NULL,
   `num_id` int(11) NOT NULL,
-  `log_message` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `log_message` varchar(200) NOT NULL,
   `log_success` tinyint(4) NOT NULL,
   `log_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `send_log`
@@ -96,10 +96,10 @@ INSERT INTO `send_log` (`log_id`, `usr_id`, `num_id`, `log_message`, `log_succes
 
 CREATE TABLE `users` (
   `usr_id` int(11) NOT NULL,
-  `usr_name` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `usr_name` varchar(20) NOT NULL,
   `usr_active` tinyint(1) DEFAULT '0',
   `usr_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
