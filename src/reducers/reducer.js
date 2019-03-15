@@ -1,4 +1,4 @@
-import * as logAction from '../actions/logAction';
+import {types} from '../actions/logAction';
 
 const initialState = {
     countries: [],
@@ -14,23 +14,23 @@ const reducer = (state = initialState, action) => {
     let newState = { ...state };
 
     switch (action.type) {
-        case logAction.types.LOAD_COUNTRIES:
+        case types.LOAD_COUNTRIES:
             newState.countries = action.countries;
             break;
 
-        case logAction.types.LOAD_USERS:
+        case types.LOAD_USERS:
             newState.users = action.users;
             break;
 
-        case logAction.types.CHANGE_LODING_FLAG:
+        case types.CHANGE_LODING_FLAG:
             newState.loadingFlag = action.flag;
             break;
 
-        case logAction.types.CHANGE_LODED_FLAG:
+        case types.CHANGE_LODED_FLAG:
             newState.loadedFlag = action.flag;
             break;
 
-        case logAction.types.LOAD_LOG_RESULTS:
+        case types.LOAD_LOG_RESULTS:
             newState.logResult = action.logResult;
             break;
 

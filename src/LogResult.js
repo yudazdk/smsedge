@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 
-const LogResultItem = (props) => {
-    const {logItem} = props;
+import LogResultItem from './LogResultItem';
 
-    return (
-        <tr>
-            <td>{logItem.log_date}</td>
-            <td>{logItem.sent_succeessfully}</td>
-            <td>{logItem.sent_failed}</td>
-        </tr>
-    );
-};
-
+/**
+ * This component renders the
+ * log result table.
+ */
 class LogResult extends Component {
     renderRows() {
         return this.props.logResult.map( (logItem, index) => {

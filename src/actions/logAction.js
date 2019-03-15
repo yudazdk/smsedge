@@ -10,36 +10,63 @@ export const types = {
     LOAD_LOG_RESULTS: 'LOAD_LOG_RESULTS'
 };
 
-export function loadCountries(dispatch) {
-    axios.get('http://localhost/smsedge/api/countries.php').then( (response) => {
+export const apiUrl = 'http://localhost/smsedge/api';
+
+/**
+ * This function loads the
+ * countries from server.
+ *
+ * @param dispatch
+ * @returns {Promise.<void>}
+ */
+export async function loadCountries(dispatch) {
+    try {
+        const response = await axios.get(apiUrl + '/countries.php');
         dispatch({type: types.LOAD_COUNTRIES, countries: response.data});
-    },  (error) => {
+    } catch(error) {
         console.log(error);
-    });
+    }
 }
 
-export function loadUsers(dispatch) {
-    axios.get('http://localhost/smsedge/api/users.php').then( (response) => {
+/**
+ * This function load the
+ * users from server.
+ *
+ * @param dispatch
+ * @returns {Promise.<void>}
+ */
+export async function loadUsers(dispatch) {
+    try {
+        const response = await axios.get(apiUrl + '/users.php');
         dispatch({type: types.LOAD_USERS, users: response.data});
-    },  (error) => {
+    } catch(error) {
         console.log(error);
-    });
+    }
 }
 
-export function searchLogs(dispatch, filters) {
+/**
+ * This function searches logs
+ * according to filters.
+ *
+ * @param dispatch
+ * @param filters
+ */
+export async function searchLogs(dispatch, filters) {
     dispatch({type: types.CHANGE_LODING_FLAG, flag: true});
     dispatch({type: types.CHANGE_LODED_FLAG, flag: false});
 
-    axios({
-        url: 'http://localhost/smsedge/api/logs.php',
-        method: "get",
-        params: filters
-    }).then(function (result) {
+    try {
+        const result = await axios({
+            url: apiUrl + '/logs.php',
+            method: "get",
+            params: filters
+        });
+
         dispatch({type: types.LOAD_LOG_RESULTS, logResult: result.data});
 
         dispatch({type: types.CHANGE_LODING_FLAG, flag: false});
         dispatch({type: types.CHANGE_LODED_FLAG, flag: true});
-    }, function (error) {
+    } catch(error) {
         dispatch({type: types.CHANGE_LODING_FLAG, flag: false});
-    });
+    }
 }
