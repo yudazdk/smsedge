@@ -181,7 +181,7 @@ class App extends Component {
                             selected={ state.filters.from_date }
                             onChange={ this.fromDateChange}
                             name="from_date"
-                            dateFormat="YYYY-MM-dd"
+                            dateFormat={TIME_FORMAT}
                             className={this.fromDateClass}
                         />
                     </div>
@@ -194,7 +194,7 @@ class App extends Component {
                             selected={ state.filters.to_date }
                             onChange={ this.toDateChange}
                             name="to_date"
-                            dateFormat="YYYY-MM-dd"
+                            dateFormat={TIME_FORMAT}
                             className={this.toDateClass}
                         />
                     </div>
